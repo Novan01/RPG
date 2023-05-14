@@ -1,0 +1,58 @@
+{
+    "food": [
+        {
+            "name": "Roast Beef",
+            "health_restore": 40,
+            "price": 45
+        },
+        {
+            "name": "Beef Stew",
+            "health_restore": 25,
+            "price": 20
+        },
+        {
+            "name": "Turkey Leg",
+            "health_restore": 30,
+            "price": 40
+        },
+        {
+            "name": "Roast Chicken",
+            "health_restore": 15,
+            "price": 10
+        },
+        {
+            "name": "Bread",
+            "health_restore": 5,
+            "price": 2
+        },
+        {
+            "name": "Apple",
+            "health_restore": 2,
+            "price": 1
+        }
+    ],
+
+    "drinks": [
+        {
+            "name" : "Meed",
+            "health_restore" : 20,
+            "price" : 10
+        },
+        {
+            "name" : "Beer",
+            "health_restore" : 15,
+            "price" : 8
+        },
+        {
+            "name" : "Wine",
+            "health_restore" : 10,
+            "price" : 6
+        },
+        {
+            "name" : "Water",
+            "health_restore" : 5,
+            "price" : 2
+        }
+    ]
+
+}
