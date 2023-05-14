@@ -2,8 +2,10 @@ package com.rpg. character_database;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rpg.CharacterCreator;
 import com.rpg.character_classes.Character;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.io.*;
 
 
@@ -23,10 +25,15 @@ public class characterDatabase {
         characterList = loadCharactersFromFile();
     }
     
-    //method to retrieve character from the .dat file - should be based on the character name
+    //method to add characters created to the json file
     public void addCharacterToList(Character player) throws JsonProcessingException {
+        for(Character c : characterList) {
+            if(c.getName().equals(player.getName())) {
+                System.out.println("Please chose a different name");
+                return;
+            }
+        }
         characterList.add(player);
-        System.out.println(player.getCharClass());
 
         //serialize the character list into json
         ObjectMapper objectMapper = new ObjectMapper();
@@ -41,14 +48,13 @@ public class characterDatabase {
         }
     }
 
+    //method to display the characters saved in the json file
     public void displayCharacterList(ArrayList<Character> characterList) {
         
     }
 
-    public ArrayList<Character> getAllCharacters() {
-        return this.characterList;
-    }
 
+    //method to load all the characters from the json file - will be used with displayCharacterList method
     public ArrayList<Character> loadCharactersFromFile() {
         
         ArrayList<Character> loadedCharacters = new ArrayList<>();
@@ -63,5 +69,16 @@ public class characterDatabase {
             System.out.println("Failed to load characters " + e.getMessage());
         }
         return loadedCharacters;
+    }
+
+    //method to delete character based on their name id - will use in character selection screen after hitting play button
+    public void deleteCharacter(String name) {
+        for(Iterator<Character> iter = characterList.iterator(); iter.hasNext();) {
+            Character character = iter.next();
+            if(character.getName().equals(name)) {
+                iter.remove();
+                break;
+            }
+        }
     }
 }

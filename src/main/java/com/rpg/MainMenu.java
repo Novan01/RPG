@@ -52,7 +52,8 @@ public class MainMenu {
         //button action listeners
         startGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-             //start the game   
+             //start the game  
+             //first open character selection screen 
             }
         });
 
