@@ -201,6 +201,8 @@ public class CharacterCreator {
 
 	public static void saveCharacter(Character player) {
 		characterDatabase cd = new characterDatabase();
+		player.getCharClass();
+		player.getName();
 		try {
 			cd.addCharacterToList(player);
 		} catch (JsonProcessingException e) {
@@ -211,7 +213,7 @@ public class CharacterCreator {
 	}
 
 	public Character createCharacter() {
-		Character player = new Character(nameField.getText(), classField.getText(), Integer.parseInt(healthField.getText()), Integer.parseInt(strengthField.getText()), Integer.parseInt(dexField.getText()), Integer.parseInt(intField.getText()));
+		Character player = new Character(nameField.getText(), classField.getSelectedText(), Integer.parseInt(healthField.getText()), Integer.parseInt(strengthField.getText()), Integer.parseInt(dexField.getText()), Integer.parseInt(intField.getText()));
 		return player;
 	}
 
