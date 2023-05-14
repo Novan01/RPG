@@ -9,12 +9,7 @@ public class Character {
 	public String cClass;
 
 	public Character() {
-		cName = null;
-		cClass = null;
-		cStrength = 0;
-		cHealth = 0;
-		cIntelligence = 0;
-		cDexterity = 0;
+		
 		
 	}
 

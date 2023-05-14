@@ -1,4 +1,5 @@
 package com.rpg;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rpg.character_classes.Character;
 import com.rpg.character_database.characterDatabase;
 import com.rpg.extras.*;
@@ -200,7 +201,12 @@ public class CharacterCreator {
 
 	public static void saveCharacter(Character player) {
 		characterDatabase cd = new characterDatabase();
-		cd.addCharacterToList(player);
+		try {
+			cd.addCharacterToList(player);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

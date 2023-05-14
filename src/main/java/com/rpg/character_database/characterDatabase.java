@@ -1,4 +1,7 @@
 package com.rpg. character_database;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rpg.character_classes.Character;
 import java.util.ArrayList;
 import java.io.*;
@@ -9,28 +12,32 @@ import java.io.*;
  * Lets use an ArrayList<Character> to hold each new character as they are added in, this list will also be displayed when Play is pressed so the player can select their character
  * 
  */
-import java.lang.reflect.Array;
+
 
 public class characterDatabase {
     ArrayList<Character> characterList = new ArrayList<Character>();
-    String fileName = "characterDatabase.txt";
+    String fileName = "characterDatabase.json";
    
    
     public characterDatabase() {
-
-        //this.characterList = loadCharactersFromFile();
+        characterList = loadCharactersFromFile();
     }
     
     //method to retrieve character from the .dat file - should be based on the character name
-    public void addCharacterToList(Character player) {
+    public void addCharacterToList(Character player) throws JsonProcessingException {
         characterList.add(player);
-        System.out.println(player.getName());
+        System.out.println(player.getCharClass());
 
-        try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName, true))) {
-            oos.writeObject(player);
-        }
-        catch(IOException e) {
-            System.out.println("Failed to add character to file " + fileName);
+        //serialize the character list into json
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(characterList);
+       
+
+        //write json to the file
+        try(FileWriter fw = new FileWriter(fileName)) {
+            fw.write(json);
+        } catch (Exception e) {
+            System.out.println("Failed to save character to " + e.getMessage());
         }
     }
 
@@ -46,10 +53,13 @@ public class characterDatabase {
         
         ArrayList<Character> loadedCharacters = new ArrayList<>();
        
-        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            loadedCharacters = (ArrayList<Character>)ois.readObject();
+        try {
+            File file = new File(fileName);
+            ObjectMapper om = new ObjectMapper();
+            om.registerSubtypes(Character.class);
+            loadedCharacters = om.readValue(file, new TypeReference<ArrayList<Character>>(){});
         }
-        catch(IOException | ClassNotFoundException e) {
+        catch(IOException e) {
             System.out.println("Failed to load characters " + e.getMessage());
         }
         return loadedCharacters;
