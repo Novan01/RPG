@@ -2,7 +2,6 @@ package com.rpg. character_database;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rpg.CharacterCreator;
 import com.rpg.character_classes.Character;
 import java.util.ArrayList;
 import java.util.Iterator;

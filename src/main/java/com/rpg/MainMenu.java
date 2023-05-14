@@ -1,6 +1,5 @@
 package com.rpg;
 
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
