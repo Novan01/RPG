@@ -28,5 +28,15 @@
         "dex": 5,
         "intel": 2,
         "charClass": null
+    },
+    {
+        "dexterity": 12,
+        "intelligence": 5,
+        "name": "Pain",
+        "health": 28,
+        "strength": 4,
+        "dex": 12,
+        "intel": 5,
+        "charClass": null
     }
 ]
