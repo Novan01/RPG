@@ -25,4 +25,22 @@
   "dex" : 6,
   "intel" : 2,
   "charClass" : "Warrior"
+}, {
+  "dexterity" : 6,
+  "intelligence" : 13,
+  "name" : "Cam",
+  "health" : 6,
+  "strength" : 5,
+  "dex" : 6,
+  "intel" : 13,
+  "charClass" : "Bard"
+}, {
+  "dexterity" : 9,
+  "intelligence" : 4,
+  "name" : "Dee",
+  "health" : 14,
+  "strength" : 2,
+  "dex" : 9,
+  "intel" : 4,
+  "charClass" : "Rouge"
 } ]
