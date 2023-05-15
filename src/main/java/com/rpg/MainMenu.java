@@ -7,6 +7,9 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import com.rpg.character_database.CharacterSelector;
+import com.rpg.character_database.characterDatabase;
+
 
 public class MainMenu {
 
@@ -52,6 +55,8 @@ public class MainMenu {
             public void actionPerformed(ActionEvent ae) {
              //start the game  
              //first open character selection screen 
+             new CharacterSelector();
+             frame.setVisible(false);
             }
         });
 

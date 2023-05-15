@@ -54,38 +54,11 @@ public class CharacterCreator {
 	//buttons
 	private JButton createButton = new JButton("Create");
 	private JButton rollButton = new JButton("Roll");
+	private JButton exitButton = new JButton("Exit");
 
 	public CharacterCreator() {
-		//create custom fonts for the title and game buttons
-        try {
-			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("lib/fonts/dragonwick-font/DragonwickBold-vmBZ.ttf")).deriveFont(32f);
-            mainFont = Font.createFont(Font.TRUETYPE_FONT, new File("lib/fonts/dragonwick-font/DragonwickRegular-lgXV.ttf")).deriveFont(20f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			ge.registerFont(titleFont);
-            ge.registerFont(mainFont);
-        }
-        catch(IOException | FontFormatException e) {
-
-        }
 		
-
-		//set custom fonts to all fields and labels
-		nameLabel.setFont(mainFont);
-		strengthLabel.setFont(mainFont);
-		classLabel.setFont(mainFont);
-		healthLabel.setFont(mainFont);
-		dexLabel.setFont(mainFont);
-		intLabel.setFont(mainFont);
-		createButton.setFont(mainFont);
-		nameField.setFont(mainFont);
-		healthField.setFont(mainFont);
-		strengthField.setFont(mainFont);
-		classList.setFont(mainFont);
-		dexField.setFont(mainFont);
-		intField.setFont(mainFont);
-		rollButton.setFont(mainFont);
-		creatorTitle.setFont(titleFont);
-		
+		setFont();
 
 		//button action listener
 		createButton.addActionListener(new ActionListener() {
@@ -94,6 +67,8 @@ public class CharacterCreator {
 				Character player = createCharacter();
 				saveCharacter(player);	
 				clearAllFields();
+				frame.setVisible(false);
+				new MainMenu();
 			}
 		});
 
@@ -105,6 +80,13 @@ public class CharacterCreator {
 			}
 		});
 
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				new MainMenu();
+                frame.setVisible(false);
+			}
+		});
+
 
 
 		//add title to panel
@@ -112,10 +94,11 @@ public class CharacterCreator {
 		panel.add(creatorTitle, BorderLayout.NORTH);
 		
 		//create button panel
-		JPanel buttoPanel = new JPanel(new GridLayout(1, 2));
-		buttoPanel.add(rollButton);
-		buttoPanel.add(createButton);
-		panel.add(buttoPanel, BorderLayout.SOUTH);
+		JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
+		buttonPanel.add(rollButton);
+		buttonPanel.add(createButton);
+		buttonPanel.add(exitButton);
+		panel.add(buttonPanel, BorderLayout.PAGE_END);
 
 		//add labels
 		JPanel labelPanel = new JPanel(new GridLayout(6, 1));
@@ -223,6 +206,40 @@ public class CharacterCreator {
 		strengthField.setText("");
 		dexField.setText("");
 		intField.setText("");
+
+	}
+
+	public void setFont() {
+		//create custom fonts for the title and game buttons
+        try {
+			titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("lib/fonts/dragonwick-font/DragonwickBold-vmBZ.ttf")).deriveFont(32f);
+            mainFont = Font.createFont(Font.TRUETYPE_FONT, new File("lib/fonts/dragonwick-font/DragonwickRegular-lgXV.ttf")).deriveFont(20f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(titleFont);
+            ge.registerFont(mainFont);
+        }
+        catch(IOException | FontFormatException e) {
+
+        }
+		
+
+		//set custom fonts to all fields and labels
+		nameLabel.setFont(mainFont);
+		strengthLabel.setFont(mainFont);
+		classLabel.setFont(mainFont);
+		healthLabel.setFont(mainFont);
+		dexLabel.setFont(mainFont);
+		intLabel.setFont(mainFont);
+		createButton.setFont(mainFont);
+		nameField.setFont(mainFont);
+		healthField.setFont(mainFont);
+		strengthField.setFont(mainFont);
+		classList.setFont(mainFont);
+		dexField.setFont(mainFont);
+		intField.setFont(mainFont);
+		rollButton.setFont(mainFont);
+		creatorTitle.setFont(titleFont);
+        exitButton.setFont(mainFont);
 
 	}
 }
