@@ -1,6 +1,6 @@
 [ {
-  "intelligence" : 13,
   "dexterity" : 6,
+  "intelligence" : 13,
   "name" : "Novan",
   "health" : 18,
   "strength" : 5,
@@ -8,12 +8,21 @@
   "intel" : 13,
   "charClass" : "Wizard"
 }, {
-  "intelligence" : 1,
   "dexterity" : 6,
+  "intelligence" : 1,
   "name" : "John",
   "health" : 20,
   "strength" : 5,
   "dex" : 6,
   "intel" : 1,
+  "charClass" : "Warrior"
+}, {
+  "dexterity" : 6,
+  "intelligence" : 2,
+  "name" : "Derek",
+  "health" : 22,
+  "strength" : 10,
+  "dex" : 6,
+  "intel" : 2,
   "charClass" : "Warrior"
 } ]
