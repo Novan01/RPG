@@ -213,7 +213,7 @@ public class CharacterCreator {
 	}
 
 	public Character createCharacter() {
-		Character player = new Character(nameField.getText(), classField.getSelectedText(), Integer.parseInt(healthField.getText()), Integer.parseInt(strengthField.getText()), Integer.parseInt(dexField.getText()), Integer.parseInt(intField.getText()));
+		Character player = new Character(nameField.getText(), classList.getSelectedValue(), Integer.parseInt(healthField.getText()), Integer.parseInt(strengthField.getText()), Integer.parseInt(dexField.getText()), Integer.parseInt(intField.getText()));
 		return player;
 	}
 

@@ -2,6 +2,7 @@ package com.rpg.character_database;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rpg.character_classes.Character;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,6 +37,7 @@ public class characterDatabase {
 
         //serialize the character list into json
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
         String json = objectMapper.writeValueAsString(characterList);
        
 
