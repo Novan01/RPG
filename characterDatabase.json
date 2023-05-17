@@ -1,6 +1,6 @@
 [ {
-  "dexterity" : 6,
   "intelligence" : 13,
+  "dexterity" : 6,
   "name" : "Novan",
   "health" : 18,
   "strength" : 5,
@@ -8,8 +8,8 @@
   "intel" : 13,
   "charClass" : "Wizard"
 }, {
-  "dexterity" : 6,
   "intelligence" : 1,
+  "dexterity" : 6,
   "name" : "John",
   "health" : 20,
   "strength" : 5,
@@ -17,8 +17,8 @@
   "intel" : 1,
   "charClass" : "Warrior"
 }, {
-  "dexterity" : 6,
   "intelligence" : 2,
+  "dexterity" : 6,
   "name" : "Derek",
   "health" : 22,
   "strength" : 10,
@@ -26,8 +26,8 @@
   "intel" : 2,
   "charClass" : "Warrior"
 }, {
-  "dexterity" : 6,
   "intelligence" : 13,
+  "dexterity" : 6,
   "name" : "Cam",
   "health" : 6,
   "strength" : 5,
@@ -35,12 +35,30 @@
   "intel" : 13,
   "charClass" : "Bard"
 }, {
-  "dexterity" : 9,
   "intelligence" : 4,
+  "dexterity" : 9,
   "name" : "Dee",
   "health" : 14,
   "strength" : 2,
   "dex" : 9,
   "intel" : 4,
   "charClass" : "Rouge"
+}, {
+  "intelligence" : 2,
+  "dexterity" : 6,
+  "name" : "Kay",
+  "health" : 19,
+  "strength" : 6,
+  "dex" : 6,
+  "intel" : 2,
+  "charClass" : "Warrior"
+}, {
+  "intelligence" : 2,
+  "dexterity" : 7,
+  "name" : "Rei",
+  "health" : 20,
+  "strength" : 9,
+  "dex" : 7,
+  "intel" : 2,
+  "charClass" : "Warrior"
 } ]

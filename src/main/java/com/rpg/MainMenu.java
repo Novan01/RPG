@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.rpg.character_database.CharacterSelector;
-import com.rpg.character_database.characterDatabase;
+
 
 
 public class MainMenu {
