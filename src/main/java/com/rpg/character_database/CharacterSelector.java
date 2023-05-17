@@ -1,10 +1,10 @@
 package com.rpg.character_database;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.rpg.CharacterCreator;
 import com.rpg.MainMenu;
 import com.rpg.character_classes.Character;
-import com.rpg.extras.*;
+
 
 import java.util.*;
 import java.awt.*;
@@ -12,7 +12,6 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.io.*;
 
-import javax.lang.model.SourceVersion;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
