@@ -16,12 +16,12 @@ public class MongoClientConnection {
     public static void connect(String password) {
         String connectionString = "mongodb+srv://Novan01:" + password + "@clustermain.igb57xa.mongodb.net/?retryWrites=true&w=majority";
        
-        //ServerAPI serverApi = ServerApi.builder().version(ServerApiVersion.V1).build();
+        ServerApi serverApi = ServerApi.builder().version(ServerApiVersion.V1).build();
         
-        //MongoClientSettings settings = MongoClientSettings.builder().applyConnectionString(new ConnectionString(connectionString)).serverApi(serverApi).build();
+        MongoClientSettings settings = MongoClientSettings.builder().applyConnectionString(new ConnectionString(connectionString)).serverApi(serverApi).build();
 
         // Create a new client and connect to the server
-        try (MongoClient mongoClient = MongoClients.create(connectionString)) {
+        try (MongoClient mongoClient = MongoClients.create(settings)) {
             try {
                 // Send a ping to confirm a successful connection
                 MongoDatabase database = mongoClient.getDatabase("admin");
