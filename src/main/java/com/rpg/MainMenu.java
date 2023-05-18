@@ -57,7 +57,6 @@ public class MainMenu {
              //start the game  
              //first open character selection screen 
              new CharacterSelector();
-             new MongoClientConnection("HBHUfG8DKKft36uG");
              frame.setVisible(false);
             }
         });

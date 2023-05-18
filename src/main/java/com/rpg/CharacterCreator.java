@@ -184,13 +184,8 @@ public class CharacterCreator {
 
 	public static void saveCharacter(Character player) {
 		characterDatabase cd = new characterDatabase();
-		player.getCharClass();
-		player.getName();
-		try {
-			cd.addCharacterToList(player);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+		cd.addCharacterToList(player);
+		
 		
 	}
 

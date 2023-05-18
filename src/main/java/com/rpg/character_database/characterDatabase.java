@@ -3,9 +3,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.rpg.character_classes.Character;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import com.mongodb.client.model.Sorts;
+import com.mongodb.client.model.Filters;
+
 import java.io.*;
 
 
@@ -17,36 +27,39 @@ import java.io.*;
 
 
 public class characterDatabase {
-    ArrayList<Character> characterList = new ArrayList<Character>();
-    String fileName = "characterDatabase.json";
+    private static final String DB_NAME = "characterDB";
+    private static final String COLLECTION_NAME = "characterCollection";
+
+    private MongoClient mongoClient;
+    private MongoDatabase mongoDB;
+    private MongoCollection<Document> collection;
    
    
     public characterDatabase() {
-        characterList = loadCharactersFromFile();
+        //new MongoClientConnection(password);
+
+        //initialize the mongo client and connect to the database
+        mongoClient = MongoClients.create("mongodb+srv://Novan01:HBHUfG8DKKft36uG@clustermain.igb57xa.mongodb.net/?retryWrites=true&w=majority");
+        mongoDB = mongoClient.getDatabase(DB_NAME);
+
+        //get or create the characters collection
+        collection = mongoDB.getCollection(COLLECTION_NAME);
     }
     
     //method to add characters created to the json file
-    public void addCharacterToList(Character player) throws JsonProcessingException {
-        for(Character c : characterList) {
-            if(c.getName().equals(player.getName())) {
-                System.out.println("Please chose a different name");
-                return;
-            }
-        }
-        characterList.add(player);
+    public void addCharacterToList(Character player) {
+        Bson filter = Filters.eq("name", player.getName());
 
-        //serialize the character list into json
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-        String json = objectMapper.writeValueAsString(characterList);
-       
+        if(collection.countDocuments(filter) > 0) {
+            System.out.println("Please chose a different name");
+            return;
 
-        //write json to the file
-        try(FileWriter fw = new FileWriter(fileName)) {
-            fw.write(json);
-        } catch (Exception e) {
-            System.out.println("Failed to save character to " + e.getMessage());
         }
+        //increment the id of the character
+        Document maxID = collection.find().sort(Sorts.descending("_id")).limit(1).first();
+        int nextID = (maxID != null) ? maxID.getInteger("_id") + 1 : 1;
+        Document characterDoc = new Document("_id",nextID).append("name", player.getName()).append("characterClass", player.getCharClass()).append("health", player.getHealth()).append("strength", player.getStrength()).append("dexterity", player.getDexterity()).append("intelligence", player.getIntelligence());
+        collection.insertOne(characterDoc);
     }
 
     //method to display the characters saved in the json file
@@ -60,26 +73,24 @@ public class characterDatabase {
         
         ArrayList<Character> loadedCharacters = new ArrayList<>();
        
-        try {
-            File file = new File(fileName);
-            ObjectMapper om = new ObjectMapper();
-            om.registerSubtypes(Character.class);
-            loadedCharacters = om.readValue(file, new TypeReference<ArrayList<Character>>(){});
-        }
-        catch(IOException e) {
-            System.out.println("Failed to load characters " + e.getMessage());
+        for(Document doc : collection.find()) {
+            String name = doc.getString("name");
+            String characterClass = doc.getString("characterClass");
+            int health = doc.getInteger("health");
+            int strength = doc.getInteger("strength");
+            int dexterity = doc.getInteger("dexterity");
+            int intelligence = doc.getInteger("intelligence");
+
+            Character character = new Character(name, characterClass, health, strength, dexterity, intelligence);
+            loadedCharacters.add(character);
         }
         return loadedCharacters;
     }
 
     //method to delete character based on their name id - will use in character selection screen after hitting play button
     public void deleteCharacter(String name) {
-        for(Iterator<Character> iter = characterList.iterator(); iter.hasNext();) {
-            Character character = iter.next();
-            if(character.getName().equals(name)) {
-                iter.remove();
-                break;
-            }
-        }
+        Bson filter = Filters.eq("name", name);
+
+        collection.deleteOne(filter);
     }
 }

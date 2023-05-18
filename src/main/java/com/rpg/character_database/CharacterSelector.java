@@ -38,6 +38,7 @@ public class CharacterSelector extends JPanel {
     
     //needed lists and database
     private JList<String> characterList;
+    //eventually create some login page 
     private characterDatabase cd = new characterDatabase();
 
     //buttons to be added to frame
@@ -88,7 +89,14 @@ public class CharacterSelector extends JPanel {
 
         deleteChar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				
+				if(characterList.getSelectedValue() != null) {
+                    characterDatabase cd = new characterDatabase();
+                    cd.deleteCharacter(characterList.getSelectedValue());
+
+                    //update the JList
+                    DefaultListModel<String> model = (DefaultListModel<String>) characterList.getModel();
+                    model.removeElement(characterList.getSelectedValue());
+                }
 				
 			}
 		});
