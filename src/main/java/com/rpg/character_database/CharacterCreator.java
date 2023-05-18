@@ -1,9 +1,7 @@
-package com.rpg;
-import com.fasterxml.jackson.core.JsonProcessingException;
+package com.rpg.character_database;
 import com.rpg.character_classes.Character;
-import com.rpg.character_database.characterDatabase;
 import com.rpg.extras.*;
-
+import com.rpg.*;
 
 import java.awt.*;
 import java.awt.event.*;

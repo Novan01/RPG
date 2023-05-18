@@ -1,7 +1,6 @@
 package com.rpg.character_database;
 
 
-import com.rpg.CharacterCreator;
 import com.rpg.MainMenu;
 import com.rpg.character_classes.Character;
 

@@ -7,8 +7,8 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import com.rpg.character_database.CharacterCreator;
 import com.rpg.character_database.CharacterSelector;
-import com.rpg.character_database.MongoClientConnection;
 
 
 
