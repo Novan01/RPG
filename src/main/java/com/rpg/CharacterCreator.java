@@ -189,7 +189,6 @@ public class CharacterCreator {
 		try {
 			cd.addCharacterToList(player);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

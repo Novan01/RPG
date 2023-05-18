@@ -13,7 +13,7 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
 public class MongoClientConnection {
-    public static void connect(String password) {
+    public MongoClientConnection(String password) {
         String connectionString = "mongodb+srv://Novan01:" + password + "@clustermain.igb57xa.mongodb.net/?retryWrites=true&w=majority";
        
         ServerApi serverApi = ServerApi.builder().version(ServerApiVersion.V1).build();

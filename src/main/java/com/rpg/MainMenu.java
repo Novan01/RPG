@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.rpg.character_database.CharacterSelector;
+import com.rpg.character_database.MongoClientConnection;
 
 
 
@@ -56,6 +57,7 @@ public class MainMenu {
              //start the game  
              //first open character selection screen 
              new CharacterSelector();
+             new MongoClientConnection("HBHUfG8DKKft36uG");
              frame.setVisible(false);
             }
         });
