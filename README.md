@@ -1,7 +1,6 @@
 ** WHAT TO WORK ON **
 
-Working on CharacterCreator class
-Text field sizing is wrong - too big vertically
-Get Class list Working
-Get random dice roll for stats working based on button press
-Make back to main menu button
+Begin to implement Quarkus
+Use some other .js to create better stylized menus and applications
+Being to work on building the actual game - something playable
+Use some AI - chatgpt - to create dynamic npc characters
