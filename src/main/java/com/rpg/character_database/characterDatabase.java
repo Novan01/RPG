@@ -55,10 +55,12 @@ public class characterDatabase {
             return;
 
         }
+
         //increment the id of the character
         Document maxID = collection.find().sort(Sorts.descending("_id")).limit(1).first();
         int nextID = (maxID != null) ? maxID.getInteger("_id") + 1 : 1;
-        Document characterDoc = new Document("_id",nextID).append("name", player.getName()).append("characterClass", player.getCharClass()).append("health", player.getHealth()).append("strength", player.getStrength()).append("dexterity", player.getDexterity()).append("intelligence", player.getIntelligence());
+        
+        Document characterDoc = new Document("_id", nextID).append("name", player.getName()).append("characterClass", player.getCharClass()).append("health", player.getHealth()).append("strength", player.getStrength()).append("dexterity", player.getDexterity()).append("intelligence", player.getIntelligence());
         collection.insertOne(characterDoc);
     }
 
